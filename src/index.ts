@@ -4,8 +4,8 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import { config } from 'dotenv';
-import { CodeAnalyzer } from './analyzer/CodeAnalyzer';
-import logger from './utils/logger';
+import { CodeAnalyzer } from './analyzer/CodeAnalyzer.js';
+import logger from './utils/logger.js';
 
 // Load environment variables
 config();

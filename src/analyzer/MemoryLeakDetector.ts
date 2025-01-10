@@ -1,5 +1,5 @@
 import { Project, Node, SyntaxKind, SourceFile } from 'ts-morph';
-import logger from '../utils/logger';
+import logger from '../utils/logger.js';
 
 interface MemoryIssue {
     type: string;
@@ -20,16 +20,16 @@ export class MemoryLeakDetector {
         const issues: MemoryIssue[] = [];
 
         for (const sourceFile of project.getSourceFiles()) {
-            // Check for event listener leaks
+            
             issues.push(...this.detectEventListenerLeaks(sourceFile));
             
-            // Check for closure leaks
+            
             issues.push(...this.detectClosureLeaks(sourceFile));
             
-            // Check for timer leaks
+            
             issues.push(...this.detectTimerLeaks(sourceFile));
             
-            // Check for large object accumulation
+            
             issues.push(...this.detectObjectAccumulation(sourceFile));
         }
 
@@ -72,7 +72,7 @@ export class MemoryLeakDetector {
         sourceFile.forEachDescendant(node => {
             if (node.getKind() === SyntaxKind.ArrowFunction || 
                 node.getKind() === SyntaxKind.FunctionDeclaration) {
-                // Check for closures that capture large objects or arrays
+                
                 const text = node.getText();
                 if (text.includes('this.') || text.includes('state') || text.includes('props')) {
                     issues.push({
@@ -149,7 +149,7 @@ export class MemoryLeakDetector {
             suggestions.add(issue.suggestion);
         });
 
-        // Add general suggestions
+        
         suggestions.add('Implement proper cleanup in component lifecycle methods');
         suggestions.add('Use weak references for cache implementations');
         suggestions.add('Consider using a memory profiler for detailed analysis');
