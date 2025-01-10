@@ -26,7 +26,6 @@ logs/
 *.log
 error.log
 combined.log
-private.txt
 
 # Test coverage
 coverage/
@@ -47,3 +46,7 @@ tsa-report.html
 # Binary files
 bin/
 *.exe
+
+# Configuration files
+tsa.config.json
+private.txt
