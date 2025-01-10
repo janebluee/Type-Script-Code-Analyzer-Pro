@@ -4,23 +4,30 @@ An advanced TypeScript code analysis tool with real-time analysis capabilities, 
 
 ## Features
 
-- **Performance Analysis**
-  - Loop optimization suggestions
-  - Memory usage patterns
-  - Function complexity metrics
-  - Code optimization recommendations
+### 🚀 Code Analysis
+- Loop optimization suggestions
+- Memory usage patterns
+- Function complexity metrics
+- Code optimization recommendations
 
-- **Memory Leak Detection**
-  - Event listener tracking
-  - Closure analysis
-  - Timer cleanup verification
-  - Object accumulation detection
+### 🔍 Memory Management
+- Event listener tracking
+- Closure analysis
+- Timer cleanup verification
+- Object accumulation detection
 
-- **Dependency Analysis**
-  - Circular dependency detection
-  - Dependency graph visualization
-  - Import/Export analysis
-  - Package version compatibility check
+### 📊 Dependency Analysis
+- Circular dependency detection
+- Dependency graph visualization
+- Import/Export analysis
+- Package version compatibility check
+
+### 💾 Backup System (New in v1.1.0)
+- Multiple backup formats (ZIP, RAR, TAR, GZ, Folder)
+- Customizable backup location
+- Selective backup with file/folder filtering
+- Progress tracking with detailed statistics
+- Smart exclusion of unnecessary files
 
 ## Installation
 
@@ -34,6 +41,7 @@ npm install --save-dev typescript-code-analyzer-pro
 
 ## Quick Start
 
+### Code Analysis
 ```bash
 # Initialize analyzer in your project
 tsa init
@@ -50,41 +58,59 @@ tsa analyze --memory  # Memory leaks only
 tsa analyze --deps    # Dependencies only
 ```
 
+### Backup System
+```bash
+# Quick backup (defaults to ZIP format)
+tsa backup src/
+
+# Choose backup format
+tsa backup src/ -f zip   # ZIP format
+tsa backup src/ -f rar   # RAR format (requires WinRAR)
+tsa backup src/ -f tar   # TAR format
+tsa backup src/ -f gz    # GZIP format
+tsa backup src/ -f folder # Simple folder copy
+
+# Custom backup location
+tsa backup src/ -d D:/backups
+
+# Backup entire project (excludes node_modules, etc.)
+tsa backup . --all
+
+# Full backup with all options
+tsa backup . --all -f zip -d D:/my-backups
+```
+
 ## Command Options
 
 ### `tsa analyze`
-
 - `-p, --path <path>` - Path to TypeScript project (default: current directory)
 - `--perf` - Only analyze performance issues
 - `--memory` - Only analyze memory leaks
 - `--deps` - Only analyze dependencies
 - `-o, --output <format>` - Output format (json, html, terminal)
 
-### `tsa init`
+### `tsa backup`
+- `<source>` - Source file or directory to backup
+- `-f, --format <format>` - Backup format (zip, rar, tar, gz, folder)
+- `-d, --destination <path>` - Custom backup location
+- `--all` - Backup entire project (excludes node_modules, backups, .git, etc.)
 
+### `tsa init`
 Initializes configuration in your project. This creates a `tsa.config.json` file with your preferred settings.
 
 ## Output Formats
 
-### Terminal Output
-Displays results directly in the terminal with color-coded sections for:
-- Performance Issues (🔵)
-- Memory Leak Risks (🔴)
-- Dependency Problems (🟣)
-- Overall Summary (📝)
-
-### HTML Report
-Generates a beautiful, interactive HTML report with:
-- Detailed issue descriptions
-- Code locations
-- Improvement suggestions
+### Analysis Output
+- Terminal output with color-coded sections
+- Interactive HTML reports
+- Structured JSON for CI/CD integration
 - Visual dependency graphs
 
-### JSON Report
-Outputs a structured JSON file for:
-- CI/CD integration
-- Custom processing
-- Data analysis
+### Backup Output
+- Compressed archives (ZIP, RAR, TAR.GZ)
+- Uncompressed archives (TAR)
+- Direct folder copies
+- Detailed backup statistics
 
 ## Configuration
 
@@ -101,6 +127,11 @@ The `tsa.config.json` file supports:
   "reporting": {
     "format": "terminal",
     "output": "./tsa-reports"
+  },
+  "backup": {
+    "defaultFormat": "zip",
+    "defaultDestination": "./backups",
+    "exclude": ["node_modules", ".git", "dist"]
   }
 }
 ```
@@ -110,6 +141,16 @@ The `tsa.config.json` file supports:
 - Node.js >= 16
 - TypeScript >= 4.0
 - npm >= 7
+- WinRAR (optional, for RAR format backups)
+
+## What's New in v1.1.0
+- Added comprehensive backup system
+- Multiple backup format support
+- Customizable backup locations
+- Progress tracking and statistics
+- Smart file filtering
+- Improved error handling
+- Enhanced TypeScript type safety
 
 ## Contributing
 

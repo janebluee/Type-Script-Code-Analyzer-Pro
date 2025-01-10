@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import { analyze } from './commands/analyze.js';
 import { init } from './commands/init.js';
+import { backup } from './commands/backup.js';
 import { createRequire } from 'module';
 import updateNotifier from 'update-notifier';
 
@@ -44,6 +45,14 @@ program
     .command('init')
     .description('Initialize configuration in your project')
     .action(init);
+
+program
+    .command('backup <source>')
+    .description('Backup specified files or directories')
+    .option('--all', 'Backup all project files (excludes node_modules, backups, etc.)')
+    .option('-f, --format <format>', 'Backup format (zip, rar, tar, gz, folder)', 'zip')
+    .option('-d, --destination <path>', 'Backup destination directory')
+    .action((source, options) => backup(source, options));
 
 program.on('command:*', function () {
     console.error(chalk.red('Invalid command: %s'), program.args.join(' '));

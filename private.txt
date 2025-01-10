@@ -1,0 +1,2 @@
+git tag -a v1.1.0 -m "Your message"  # Membuat tag baru
+git push origin v1.1.0               # Push tag ke GitHub
