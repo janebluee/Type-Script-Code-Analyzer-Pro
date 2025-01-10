@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+error.log
+combined.log
+
+# Test coverage
+coverage/
+
+# Generated reports
+tsa-report.json
+tsa-report.html
+
+# Package files
+*.tgz
+*.tar.gz
+
+# Cache directories
+.npm/
+.eslintcache
+.prettier-cache
+
+# Binary files
+bin/
+*.exe
