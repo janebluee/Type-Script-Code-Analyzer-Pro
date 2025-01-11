@@ -1,0 +1,108 @@
+{
+  "name": "typescript-code-analyzer-pro",
+  "version": "2.0.0",
+  "description": "🚀 Professional-grade TypeScript code analysis tool with AI-powered insights.",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "bin": {
+    "tsa": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "node scripts/postbuild.js",
+    "start": "node ./bin/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "husky install && npm run build",
+    "prepublishOnly": "npm run build",
+    "package": "pkg ."
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "bin",
+    "type": "module"
+  },
+  "dependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/helmet": "^0.0.48",
+    "@types/update-notifier": "^6.0.8",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "archiver": "^5.3.1",
+    "boxen": "^7.1.1",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "compression": "^1.7.4",
+    "conf": "^12.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "figlet": "^1.7.0",
+    "fuse.js": "^7.0.0",
+    "helmet": "^8.0.0",
+    "inquirer": "^9.2.12",
+    "inquirer-autocomplete-prompt": "^3.0.1",
+    "morgan": "^1.10.0",
+    "ora": "^7.0.1",
+    "ts-morph": "^20.0.0",
+    "typescript": "^5.0.0",
+    "update-notifier": "^7.0.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^5.3.1",
+    "@types/conf": "^3.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/figlet": "^1.5.8",
+    "@types/inquirer": "^9.0.7",
+    "@types/inquirer-autocomplete-prompt": "^3.0.0",
+    "@types/jest": "^29.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0",
+    "husky": "^8.0.3",
+    "jest": "^29.0.0",
+    "pkg": "^5.8.1",
+    "prettier": "^3.1.1",
+    "tsx": "^4.7.0",
+    "ts-jest": "^29.0.0",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.1"
+  },
+  "keywords": [
+    "typescript",
+    "code-analysis",
+    "static-analysis",
+    "performance-optimization",
+    "memory-leak-detection",
+    "dependency-analysis",
+    "code-quality",
+    "developer-tools",
+    "cli",
+    "static-code-analysis",
+    "typescript-tools",
+    "code-metrics",
+    "code-review",
+    "best-practices",
+    "ai-powered",
+    "dependency-visualization",
+    "code-optimization",
+    "typescript-analyzer",
+    "code-intelligence",
+    "software-quality"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janebluee/Type-Script-Code-Analyzer-Pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/janebluee/Type-Script-Code-Analyzer-Pro/issues"
+  },
+  "homepage": "https://github.com/janebluee/Type-Script-Code-Analyzer-Pro#readme"
+}
