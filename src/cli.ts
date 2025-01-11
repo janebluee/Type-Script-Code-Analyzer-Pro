@@ -8,6 +8,7 @@ import { init } from './commands/init.js';
 import { backup } from './commands/backup.js';
 import { template } from './commands/template.js';
 import { SmartCommandManager } from './commands/smart.js';
+import { deployCommand } from './commands/deploy.js';
 import { createRequire } from 'module';
 import updateNotifier from 'update-notifier';
 
@@ -71,6 +72,15 @@ program
   .option('--ci', 'Add CI/CD configuration')
   .option('--testing', 'Add testing configuration')
   .action(template);
+
+program
+  .command('deploy')
+  .description('Deploy your TypeScript project to various platforms')
+  .option('-p, --platform <platform>', 'Deployment platform (vercel/netlify/aws/azure/gcp)')
+  .option('-r, --region <region>', 'Deployment region (for AWS)')
+  .option('-e, --environment <env>', 'Deployment environment (production/staging/development)')
+  .option('-b, --branch <branch>', 'Git branch to deploy')
+  .action(deployCommand);
 
 program
   .command('smart')

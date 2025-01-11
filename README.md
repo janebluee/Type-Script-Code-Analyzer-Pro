@@ -36,6 +36,13 @@ An advanced TypeScript code analysis tool with real-time analysis capabilities, 
 - Fuzzy search for commands
 - Smart suggestions based on usage
 
+### 🚀 Deployment Integration (New in v2.0.0)
+- Multi-platform deployment support
+- Cloud provider integrations
+- Environment-specific configurations
+- Automated CLI tool installation
+- Deployment status tracking
+
 ## Installation
 
 ```bash
@@ -87,6 +94,22 @@ tsa backup . --all
 tsa backup . --all -f zip -d D:/my-backups
 ```
 
+### Deployment
+```bash
+# Deploy to default platform (specified in tsa.config.json)
+tsa deploy
+
+# Deploy to specific platform
+tsa deploy --platform vercel
+tsa deploy --platform netlify
+tsa deploy --platform aws --region ap-southeast-1
+tsa deploy --platform azure
+tsa deploy --platform gcp
+
+# Deploy with environment
+tsa deploy --platform vercel --environment staging
+```
+
 ### Smart Commands
 ```bash
 # Enter interactive mode
@@ -114,6 +137,10 @@ tsa history
 - `-f, --format <format>` - Backup format (zip, rar, tar, gz, folder)
 - `-d, --destination <path>` - Custom backup location
 - `--all` - Backup entire project (excludes node_modules, backups, .git, etc.)
+
+### `tsa deploy`
+- `--platform <platform>` - Deployment platform (vercel, netlify, aws, azure, gcp)
+- `--environment <environment>` - Deployment environment (production, staging, etc.)
 
 ### `tsa smart`
 Enters interactive mode with command auto-completion and suggestions.
@@ -163,6 +190,41 @@ The `tsa.config.json` file supports:
     "defaultDestination": "./backups",
     "exclude": ["node_modules", ".git", "dist"]
   },
+  "deployment": {
+    "defaultPlatform": "vercel",
+    "environments": {
+      "production": {
+        "branch": "main",
+        "autoApprove": false
+      },
+      "staging": {
+        "branch": "develop",
+        "autoApprove": true
+      }
+    },
+    "platforms": {
+      "vercel": {
+        "team": "",
+        "project": ""
+      },
+      "netlify": {
+        "site": "",
+        "team": ""
+      },
+      "aws": {
+        "region": "us-east-1",
+        "profile": "default"
+      },
+      "azure": {
+        "subscription": "",
+        "resourceGroup": ""
+      },
+      "gcp": {
+        "project": "",
+        "region": "us-central1"
+      }
+    }
+  },
   "smart": {
     "historySize": 50,
     "suggestionsLimit": 10,
@@ -190,6 +252,7 @@ The `tsa.config.json` file supports:
 - Smart file filtering
 - Improved error handling
 - Enhanced TypeScript type safety
+- Deployment integration with multiple platforms
 
 ## Contributing
 
