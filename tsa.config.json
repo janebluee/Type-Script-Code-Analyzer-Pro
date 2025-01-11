@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "include": [
+    "src"
+  ],
+  "analysis": {
+    "performance": true,
+    "memory": true,
+    "dependencies": true
+  },
+  "reporting": {
+    "format": "terminal",
+    "output": "./tsa-reports"
+  }
+}
